@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, TouchableOpacity, Text } from 'react-native'
+import { COLORS, SIZES } from '../../../../constants'
 
 type Props = React.ComponentProps<typeof TouchableOpacity> & {
   title: string
@@ -17,15 +18,17 @@ const Button: React.FC<Props> = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#0e20ea',
-    paddingVertical: 20,
+    backgroundColor: COLORS.lightGreen,
+    height: 45,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 6,
+    borderRadius: SIZES.borderRadius2,
   },
   text: {
-    color: 'white',
-    fontSize: 16,
+    color: COLORS.white,
+    fontSize: SIZES.fontSize4,
+    letterSpacing: 0.1,
+    fontWeight: "700"
   },
 })
 

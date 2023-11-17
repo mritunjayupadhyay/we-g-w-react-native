@@ -1,11 +1,15 @@
 import { StyleSheet } from "react-native";
+import { COLORS, SIZES } from "../../constants";
 
 const styles = StyleSheet.create({
   input: {
-    padding: 24,
-    borderWidth: 1,
-    borderRadius: 4,
-    fontSize: 16,
+    padding: SIZES.padding,
+    borderWidth: 1.5,
+    borderColor: COLORS.gray3,
+    borderRadius: SIZES.borderRadius,
+    fontSize: SIZES.fontSize4,
+    height: SIZES.height,
+    color: COLORS.black
   },
   labelContainer: {
     position: 'absolute',
@@ -13,7 +17,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   label: {
-    fontSize: 14,
+    fontSize: SIZES.fontSize3,
+    color: COLORS.black,
+    fontWeight: "500",
+    letterSpacing: 0.3,
+    marginBottom: 8
   },
   enhancerContainer: {
     position: 'absolute',
@@ -23,8 +31,8 @@ const styles = StyleSheet.create({
   error: {
     marginTop: 4,
     marginLeft: 12,
-    fontSize: 12,
-    color: '#B00020',
+    fontSize: SIZES.fontSize2,
+    color: COLORS.error,
   },
 })
 

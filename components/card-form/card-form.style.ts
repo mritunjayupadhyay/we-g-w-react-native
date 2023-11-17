@@ -13,8 +13,6 @@ const styles = StyleSheet.create({
         marginBottom: 17,
     },
     spaceBetweenFlex: {
-        flex: 1,
-        width: "100%",
         flexDirection: "row",
         justifyContent: "space-between",
     },
