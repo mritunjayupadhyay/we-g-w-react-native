@@ -1,19 +1,13 @@
 import { View, Text, SafeAreaView, TouchableOpacity, StyleSheet } from "react-native";
-import { RootStackParamList } from "../App";
-import { StackNavigationProp } from "@react-navigation/stack";
-
-type ProfileScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
-  'Home'
->;
+import { HomeNavigationProp } from "../types/navigation.type";
 
 type Props = {
-  navigation: ProfileScreenNavigationProp;
+  navigation: HomeNavigationProp;
 };
 
 export const HomeScreen = ({navigation}: Props) => {
     const onPress = () => {
-        navigation.navigate("Cards")
+        navigation.navigate("AddCard")
       };
     return (
       <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>

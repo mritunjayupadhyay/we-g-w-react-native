@@ -3,12 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HomeScreen } from './screens/home.screen';
 import { CardsScreen } from './screens/cards.screen';
 import { AddCardScreen } from './screens/add-card.screen';
-
-export type RootStackParamList = {
-  Home: undefined, // undefined because you aren't passing any params to the home screen
-  Cards: undefined; 
-  AddCard: undefined
-};
+import { RootStackParamList } from './types/navigation.type';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
