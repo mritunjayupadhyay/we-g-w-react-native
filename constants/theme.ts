@@ -1,9 +1,11 @@
 const COLORS = {
     placeholder: "#CDCDCD",
+    error:'#B00020',
   
     black: "#000",
     gray: "#808080",
     gray2: "#8F8F8F",
+    gray3: "#E6E3E6",
 
   
     white: "#FFFFFF",
@@ -27,7 +29,10 @@ const COLORS = {
     fontSize4: 16,
     fontSize5: 18,
 
-    borderSize: 22.5
+    borderRadius: 5,
+    borderRadius2: 22.5,
+
+    height: 56
   };
 
   const CARD = {

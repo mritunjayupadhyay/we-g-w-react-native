@@ -8,13 +8,13 @@ type Prop = {
     cardNumber: string
 }
 export const CardNumber = ({ cardNumber}: Prop) => {
-    const renderOneCircle = () => {
-        return <View style={styles.circle} />
+    const renderOneCircle = (key: number) => {
+        return <View key={key} style={styles.circle} />
     }
     const render4Circle = () => {
         return (
             <View style={{ gap: 3, flex: 1, flexDirection: "row"}}>
-                {dummyArr.map(_ => renderOneCircle())}
+                {dummyArr.map(item => renderOneCircle(item))}
             </View>
         )
     }

@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import { SIZES, CARD, COLORS } from "../../constants";
 
-const { width, height, borderRadius, paddingBottom, 
+const { width, height, borderRadius, paddingBottom,
     paddingLeft, paddingTop, paddingRight, shadow } = CARD;
 
 const styles = StyleSheet.create({
@@ -10,21 +10,24 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     container: {
-        width, height, borderRadius, paddingBottom, 
+        width, height, borderRadius, paddingBottom,
         paddingLeft, paddingTop, paddingRight,
         backgroundColor: COLORS.white,
-        ...shadow 
+        ...shadow
     },
     cardImage: {
         height: 20,
         maxWidth: 50,
-        marginBottom: 17,
+        marginBottom: 7,
+        marginLeft: -7
     },
     cardNumberContainer: {
         flex: 1,
         width: "100%",
         flexDirection: "row",
         justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: 10
     },
     circle: {
         width: 6,
@@ -47,20 +50,20 @@ const styles = StyleSheet.create({
     },
     label: {
         fontSize: SIZES.fontSize1,
-      fontWeight: "500",
-      color: COLORS.gray2,
+        fontWeight: "500",
+        color: COLORS.gray2,
     },
     value: {
         fontSize: SIZES.fontSize2,
-      fontWeight: "500",
-      color: COLORS.black,
+        fontWeight: "500",
+        color: COLORS.black,
     },
     text: {
-      textAlignVertical: "center",
-      textAlign: "center",
-      fontSize: SIZES.fontSize5,
-      fontWeight: "400"
+        textAlignVertical: "center",
+        textAlign: "center",
+        fontSize: SIZES.fontSize5,
+        fontWeight: "400"
     }
-})  
+})
 
 export default styles;

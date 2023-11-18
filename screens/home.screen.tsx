@@ -7,7 +7,7 @@ type Props = {
 
 export const HomeScreen = ({navigation}: Props) => {
     const onPress = () => {
-        navigation.navigate("AddCard")
+        navigation.navigate("Cards")
       };
     return (
       <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
