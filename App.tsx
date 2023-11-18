@@ -1,4 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
+import { Provider } from 'react-redux';
+import { store } from './store';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HomeScreen } from './screens/home.screen';
 import { CardsScreen } from './screens/cards.screen';
@@ -11,6 +13,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (
+    <Provider store={store}>
     <NavigationContainer>
       <Stack.Navigator
       >
@@ -20,8 +23,7 @@ export default function App() {
         options={{
           headerShadowVisible: false,
           headerStyle: { backgroundColor: '#FFF'},
-          headerTitleAlign: "center",
-          headerTitle: "Home",
+          headerTitle: "",
         }}
         />
         <Stack.Screen 
@@ -62,5 +64,6 @@ export default function App() {
         />
       </Stack.Navigator>
     </NavigationContainer>
+    </Provider>
   );
 }

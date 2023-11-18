@@ -10,6 +10,7 @@ type Props = {
 };
 
 export const CardsScreen = ({navigation}: Props) => {
+
   const [cards, setCards] = useState([1, 2])
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white, padding: SIZES.padding2 }}>
