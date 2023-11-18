@@ -4,9 +4,7 @@ import { icons } from "../../constants";
 
 const imageUrls:ImageSourcePropType[] = [icons.verifiedVisa, icons.masterCardGray, icons.omiseGray]
 
-type Prop = {
-    cardNumber: string
-}
+
 export const CardLogoImages = () => {
     const renderImage = (imageUrl: ImageSourcePropType) => {
         return  <Image
