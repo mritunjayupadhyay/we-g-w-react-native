@@ -26,7 +26,7 @@ export const CardsScreen = ({navigation}: Props) => {
   const { data, isLoading, error } = useGetCard(cust_id)
   useEffect(() => {
     dispatch(userActions.setCards(data));
-  }, data)
+  }, [data])
   if (isLoading) {
     return (
       <View style={{ alignItems: "center", marginTop: 40}}>

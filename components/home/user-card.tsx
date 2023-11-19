@@ -8,8 +8,6 @@ type Prop = {
  navigation: HomeNavigationProp;
 }
 
-
-
 export const UserCard = ({navigation}: Prop) => {
     const dispatch = useDispatch();
 

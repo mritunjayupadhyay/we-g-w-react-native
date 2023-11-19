@@ -53,12 +53,11 @@ export const CardForm = ({ navigation }: Props) => {
       cvv: model.cvv
     }
 
-    const data = await createCard(cardData, cust_id);
+    const response = await createCard(cardData, cust_id);
     setLoading(false);
-    console.log("data", data);
-    if (data?.id && data?.cards?.data) {
-      dispatch(userActions.setUser(data.id));
-      dispatch(userActions.setCards(data.cards.data));
+    if (response.error === false && response.cust_id) {
+      dispatch(userActions.setUser(response.cust_id));
+      dispatch(userActions.setCards(response.cards));
       setStatus("success");
     } else {
       setStatus("failure");

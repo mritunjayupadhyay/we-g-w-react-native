@@ -7,11 +7,13 @@ import { SavedCardDataType } from "../types/card.type";
 interface IInitialState {
     cust_id: string | undefined;
     cards: SavedCardDataType[];
+    selectedCard: SavedCardDataType | null
 }
 
 const initialState:IInitialState = {
     cust_id: '',
-    cards: []
+    cards: [],
+    selectedCard: null
 }
 
 function createReducers() {
@@ -27,6 +29,8 @@ function createReducers() {
     function setCards(state: IInitialState, action: PayloadAction<SavedCardDataType[]>) {
         state.cards = action.payload
     }
+
+
 }
 
 const slice = createSlice({

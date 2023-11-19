@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { getCards } from "../services/omise.services";
+import { SavedCardDataType } from "../types/card.type";
 
 const useGetCard = (cust_id: string | undefined) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<SavedCardDataType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -12,9 +13,9 @@ const useGetCard = (cust_id: string | undefined) => {
     setIsLoading(true);
 
     try {
-      const response = await getCards(cust_id);
+      const cards = await getCards(cust_id);
 
-      setData(response.data.data);
+      setData(cards);
       setIsLoading(false);
     } catch (error) {
       setError(true);

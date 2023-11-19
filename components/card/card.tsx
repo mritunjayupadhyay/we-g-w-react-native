@@ -1,5 +1,6 @@
-import { View, Text, Image } from "react-native"
+import { View, Text, Image, TouchableOpacity } from "react-native"
 import React from 'react';
+import { useDispatch } from "react-redux";
 import styles from "./card.style";
 import { CardDataType, CardType, SavedCardDataType } from "../../types/card.type";
 import { images } from "../../constants";
@@ -23,9 +24,15 @@ const getCardTypeImage = (cardType: string): string | null => {
 }
 
 export const Card = ({ card }: IProp) => {
+    const dispatch = useDispatch();
+
+    const onPress = () => {
+        // dispatch(userActions.selectUser(user));
+        console.log("the card we have", card)
+    };
     const cardTypeUrl = getCardTypeImage(card.brand)
     return (
-        <View style={styles.container}>
+        <TouchableOpacity onPress={onPress}  style={styles.container}>
             <View style={{ flex: 1, alignItems: "flex-start" }}>
                 <Image
                     source={cardTypeUrl === null ? images.card : cardTypeUrl}
@@ -39,9 +46,9 @@ export const Card = ({ card }: IProp) => {
                 </View>
                 <View style={styles.spaceBetweenFlex}>
                     <Text style={styles.value}>{card.name}</Text>
-                    <Text style={styles.value}>{card.expiration_month}/{card.expiration_year}</Text>
+                    <Text style={styles.value}>{card.expiration_month}/{card.expiration_year % 100}</Text>
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
