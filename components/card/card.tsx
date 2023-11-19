@@ -1,16 +1,16 @@
 import { View, Text, Image } from "react-native"
 import React from 'react';
 import styles from "./card.style";
-import { CardDataType, CardType } from "../../types/card.type";
+import { CardDataType, CardType, SavedCardDataType } from "../../types/card.type";
 import { images } from "../../constants";
 import { CardNumber } from "./cardNumber";
 
 type IProp = {
-    card: CardDataType
+    card: SavedCardDataType
 }
 
-const getCardTypeImage = (cardType: CardType): string | null => {
-    switch (cardType) {
+const getCardTypeImage = (cardType: string): string | null => {
+    switch (cardType.toLocaleLowerCase()) {
         case "visa":
             return images.visa.xl;
         case "mastercard":
@@ -18,12 +18,12 @@ const getCardTypeImage = (cardType: CardType): string | null => {
         case "jcb":
             return images.jcb.xl
         default:
-            return null
+            return images.card
     }
 }
 
 export const Card = ({ card }: IProp) => {
-    const cardTypeUrl = getCardTypeImage(card.cardType)
+    const cardTypeUrl = getCardTypeImage(card.brand)
     return (
         <View style={styles.container}>
             <View style={{ flex: 1, alignItems: "flex-start" }}>
@@ -32,14 +32,14 @@ export const Card = ({ card }: IProp) => {
                     resizeMode="contain"
                     style={styles.cardImage}
                 />
-                <CardNumber cardNumber={card.cardNumber} />
+                <CardNumber cardNumber={card.last_digits} />
                 <View style={styles.spaceBetweenFlex}>
                     <Text style={styles.label}>Name on Card</Text>
                     <Text style={styles.label}>Expires</Text>
                 </View>
                 <View style={styles.spaceBetweenFlex}>
                     <Text style={styles.value}>{card.name}</Text>
-                    <Text style={styles.value}>{card.expireMonth}/{card.expireYear}</Text>
+                    <Text style={styles.value}>{card.expiration_month}/{card.expiration_year}</Text>
                 </View>
             </View>
         </View>

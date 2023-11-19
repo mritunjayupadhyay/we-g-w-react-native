@@ -19,8 +19,7 @@ export const CardNumber = ({ cardNumber}: Prop) => {
         )
     }
     const renderNumber = () => {
-        const last4digit = cardNumber.substring(cardNumber.length - 4)
-        return <Text style={styles.cardNum}>{last4digit}</Text>
+        return <Text style={styles.cardNum}>{cardNumber}</Text>
     }
     return (
         <View style={styles.cardNumberContainer}>

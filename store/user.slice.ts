@@ -1,26 +1,31 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { User } from "../types/user.type";
+import { User, UserCard } from "../types/user.type";
 import { user } from "./initial.state";
+import { SavedCardDataType } from "../types/card.type";
 
 
 interface IInitialState {
-    selectedUser: User | undefined;
-    users: User[];
+    cust_id: string | undefined;
+    cards: SavedCardDataType[];
 }
 
 const initialState:IInitialState = {
-    selectedUser: undefined,
-    users: user
+    cust_id: '',
+    cards: []
 }
 
 function createReducers() {
     return {
-        selectUser
+        setUser,
+        setCards
     };
 
-    function selectUser(state: IInitialState, action: PayloadAction<User>) {
-        const { id } = action.payload;
-        state.selectedUser = state.users.find((item) => item.id === id);
+    function setUser(state: IInitialState, action: PayloadAction<string>) {
+        state.cust_id = action.payload;
+    }
+
+    function setCards(state: IInitialState, action: PayloadAction<SavedCardDataType[]>) {
+        state.cards = action.payload
     }
 }
 

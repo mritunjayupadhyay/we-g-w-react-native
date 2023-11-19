@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, FlatList } from "react-native";
+import { SafeAreaView, StyleSheet, View } from "react-native";
 import { HomeNavigationProp } from "../types/navigation.type";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
@@ -11,16 +11,14 @@ type Props = {
 };
 
 export const HomeScreen = ({ navigation }: Props) => {
-  const users = useSelector((state: RootState) => state.user.users);
+  // const users = useSelector((state: RootState) => state.user.users);
   return (
     <SafeAreaView style={{ flex: 1, paddingTop: 40, alignItems: 'center', justifyContent: 'center', backgroundColor: COLORS.white }}>
-      <FlatList
+      <View
         style={{ marginBottom: 20 }}
-        data={users}
-        numColumns={2}
-        renderItem={({ item }) => <UserCard user={item} navigation={navigation} />}
-        onEndReachedThreshold={0.1}
-      />
+      >
+        <UserCard navigation={navigation} />
+      </View>
     </SafeAreaView>
   );
 }
