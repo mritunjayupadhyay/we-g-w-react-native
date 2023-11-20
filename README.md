@@ -43,7 +43,7 @@ The app features a straightforward navigation system powered by `@react-navigati
 
 ## Contributing
 
-We welcome contributions to the We Go Payment App. If you have suggestions or encounter issues, please open an issue first to discuss your ideas or the problems you've found.
+We welcome contributions to the We Go Payment App. If you have suggestions or encounter issues, please open an issue first to discuss your ideas or the problems you've found. 
 
 ## License
 
