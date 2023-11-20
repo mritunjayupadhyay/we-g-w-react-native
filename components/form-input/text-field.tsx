@@ -1,11 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import {
   TextInput,
-  StyleSheet,
   View,
-  Animated,
-  Easing,
-  TouchableWithoutFeedback,
   Text
 } from 'react-native'
 import styles from './form-input.style'

@@ -11,7 +11,6 @@ import { useEffect, useState } from "react";
 import { CardList } from "../components/card/cardList";
 import { RootState } from "../store";
 import useGetCard from "../hooks/useGetCard.hook";
-import { Screen } from "react-native-screens";
 import { userActions } from "../store/user.slice";
 import { chargeCard } from "../services/omise.services";
 import { SavedCardDataType } from "../types/card.type";

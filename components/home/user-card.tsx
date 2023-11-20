@@ -1,6 +1,4 @@
-import { TouchableOpacity, StyleSheet, Text, ColorValue } from "react-native"
-import { useDispatch } from "react-redux";
-import { userActions } from "../../store/user.slice";
+import { TouchableOpacity, StyleSheet, Text } from "react-native"
 import { HomeNavigationProp } from "../../types/navigation.type";
 
 

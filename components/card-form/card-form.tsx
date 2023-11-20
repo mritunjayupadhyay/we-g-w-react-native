@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, SafeAreaView, KeyboardAvoidingView, Alert, Platform, ActivityIndicator } from "react-native";
+import { View, SafeAreaView, ActivityIndicator } from "react-native";
 import { FormProvider, useForm } from 'react-hook-form'
 import { useDispatch } from "react-redux";
 import AwesomeAlert from 'react-native-awesome-alerts';
@@ -11,7 +11,6 @@ import { useSelector } from "react-redux";
 
 import FormTextField from '../form-input/form-input';
 import { FormModel } from '../../interfaces/form';
-import { LinkButton } from '../common/button/LinkButton/LinkButton';
 import Button from '../common/button/DefaultButton/DefaultButton';
 import { CardLogoImages } from './render-card-logo';
 import { createCard } from '../../services/omise.services';

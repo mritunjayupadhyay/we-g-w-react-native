@@ -2,7 +2,7 @@ import { View, Text, Image, TouchableOpacity } from "react-native"
 import React from 'react';
 import { useDispatch } from "react-redux";
 import styles from "./card.style";
-import { CardDataType, CardType, SavedCardDataType } from "../../types/card.type";
+import { SavedCardDataType } from "../../types/card.type";
 import { images } from "../../constants";
 import { CardNumber } from "./cardNumber";
 import { userActions } from "../../store/user.slice";

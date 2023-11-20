@@ -1,7 +1,5 @@
 import { SafeAreaView, StyleSheet, View } from "react-native";
 import { HomeNavigationProp } from "../types/navigation.type";
-import { useSelector } from "react-redux";
-import { RootState } from "../store";
 import { UserCard } from "../components/home/user-card";
 import { COLORS } from "../constants";
 
