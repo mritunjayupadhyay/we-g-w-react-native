@@ -1,4 +1,4 @@
-import { ActivityIndicator, SafeAreaView, Text, View } from "react-native";
+import { ActivityIndicator, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { useSelector } from "react-redux";
 import AwesomeAlert from 'react-native-awesome-alerts';
 
@@ -14,6 +14,7 @@ import useGetCard from "../hooks/useGetCard.hook";
 import { Screen } from "react-native-screens";
 import { userActions } from "../store/user.slice";
 import { chargeCard } from "../services/omise.services";
+import { SavedCardDataType } from "../types/card.type";
 
 type Props = {
   navigation: CardsNavigationProp;
@@ -22,6 +23,7 @@ type Props = {
 export const CardsScreen = ({navigation}: Props) => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+  const [paymentSuccess, setPaymentSuccess] = useState<SavedCardDataType | null>(null);
 
   const cust_id = useSelector((state: RootState) => state.user.cust_id);
   const cards = useSelector((state: RootState) => state.user.cards);
@@ -31,15 +33,30 @@ export const CardsScreen = ({navigation}: Props) => {
     setLoading(true);
     if (selectedCard !== null) {
       await chargeCard(selectedCard.cust_id, selectedCard.card_id)
+      setPaymentSuccess(selectedCard)
     }
     dispatch(userActions.selectCard(null))
     setLoading(false);
   }
 
+  useEffect(() => {
+    if (selectedCard) {
+      setPaymentSuccess(null)
+    }
+  }, [selectedCard])
+
   const { data, isLoading, error } = useGetCard(cust_id)
   useEffect(() => {
     dispatch(userActions.setCards(data));
   }, [data])
+  const renderSuccessMessage = () => {
+    if (paymentSuccess === null) return;
+    return (
+      <View style={styles.paymentSuccessContainer}>
+        <Text style={styles.paymentSuccessText}>✅ ฿21 is deducted from {paymentSuccess.last_digits}</Text>
+      </View>
+    )
+  }
   if (isLoading || loading) {
     return (
       <View style={{ alignItems: "center", marginTop: 40}}>
@@ -73,6 +90,24 @@ export const CardsScreen = ({navigation}: Props) => {
             pay()
           }}
         />
+        {renderSuccessMessage()}
       </SafeAreaView>
     );
 }
+
+const styles = StyleSheet.create({
+  paymentSuccessContainer: {
+    justifyContent: 'center',
+    marginHorizontal: 36,
+    width: "90%",
+    marginTop: 40,
+    alignItems: "center",
+    padding: 12,
+    
+  },
+  paymentSuccessText: {
+    fontSize: 12,
+    fontWeight: "500",
+    color: "#078BDC"
+  }
+});

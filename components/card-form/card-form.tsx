@@ -42,7 +42,6 @@ export const CardForm = ({ navigation }: Props) => {
   const { handleSubmit, formState } = formMethods
 
   const onSubmit = async (model: FormModel) => {
-    console.log("on submit", model)
     setLoading(true);
     const expireArr = model.expiration.split("/")
     const cardData: CardDataType = {

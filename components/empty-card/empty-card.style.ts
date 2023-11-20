@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
       justifyContent: "center",
       alignItems: "center",
       textAlign: "center",
+      marginTop: 50
     },
     cardImage: {
         width: 40,
