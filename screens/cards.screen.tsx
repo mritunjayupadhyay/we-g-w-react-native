@@ -1,5 +1,7 @@
 import { ActivityIndicator, SafeAreaView, Text, View } from "react-native";
 import { useSelector } from "react-redux";
+import AwesomeAlert from 'react-native-awesome-alerts';
+
 import  {EmptyCardComponent}  from '../components/empty-card/empty-card'
 import { CardsNavigationProp } from "../types/navigation.type";
 import { COLORS, SIZES } from "../constants";
@@ -11,6 +13,7 @@ import { RootState } from "../store";
 import useGetCard from "../hooks/useGetCard.hook";
 import { Screen } from "react-native-screens";
 import { userActions } from "../store/user.slice";
+import { chargeCard } from "../services/omise.services";
 
 type Props = {
   navigation: CardsNavigationProp;
@@ -18,16 +21,26 @@ type Props = {
 
 export const CardsScreen = ({navigation}: Props) => {
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
 
   const cust_id = useSelector((state: RootState) => state.user.cust_id);
   const cards = useSelector((state: RootState) => state.user.cards);
+  const selectedCard = useSelector((state: RootState) => state.user.selectedCard);
 
+  const pay = async() => {
+    setLoading(true);
+    if (selectedCard !== null) {
+      await chargeCard(selectedCard.cust_id, selectedCard.card_id)
+    }
+    dispatch(userActions.selectCard(null))
+    setLoading(false);
+  }
 
   const { data, isLoading, error } = useGetCard(cust_id)
   useEffect(() => {
     dispatch(userActions.setCards(data));
   }, [data])
-  if (isLoading) {
+  if (isLoading || loading) {
     return (
       <View style={{ alignItems: "center", marginTop: 40}}>
         <ActivityIndicator />
@@ -35,11 +48,31 @@ export const CardsScreen = ({navigation}: Props) => {
     )
   }
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white, padding: SIZES.padding2 }}>
+      <SafeAreaView style={{ flex: 1, alignItems: "center", backgroundColor: COLORS.white, padding: SIZES.padding2 }}>
       { cards.length === 0 
         ? <EmptyCardComponent navigation={navigation} />
         : <CardList cards={cards} />
       }
+      <AwesomeAlert
+          show={selectedCard !== null}
+          showProgress={false}
+          title={'PAY'}
+          message={"Are you going to pay ฿21?"}
+          closeOnTouchOutside={false}
+          closeOnHardwareBackPress={false}
+          showConfirmButton={true}
+          showCancelButton={true}
+          confirmText="OK"
+          cancelText="Cancel"
+          confirmButtonColor="#53A77A"
+          cancelButtonColor="#F32013"
+          onCancelPressed={() => {
+            dispatch(userActions.selectCard(null))
+          }}
+          onConfirmPressed={() => {
+            pay()
+          }}
+        />
       </SafeAreaView>
     );
 }

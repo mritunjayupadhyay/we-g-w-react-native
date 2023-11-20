@@ -9,17 +9,14 @@ type Prop = {
 }
 
 export const UserCard = ({navigation}: Prop) => {
-    const dispatch = useDispatch();
-
     const onPress = () => {
-        // dispatch(userActions.selectUser(user));
         navigation.navigate("Cards")
     };
     return(
         <TouchableOpacity
         onPress={onPress}            
             style={[styles.card, { backgroundColor: "#66CCCC"}]}>
-            <Text style={styles.text}>Go to Cards</Text>
+            <Text style={styles.text}>Cards</Text>
         </TouchableOpacity>
     )
 }
@@ -36,15 +33,15 @@ const styles = StyleSheet.create({
         shadowRadius: 6.27,
         borderRadius: 15,
         margin:20,
-        paddingRight:20,
         width:138,
         height:136,
         color: '#fff',
+        justifyContent: "center",
+        alignItems: "center"
     },
     text: {
         fontSize:22,
         alignSelf:'center',
         color: '#fff',
-        marginTop: 35
     },
 })

@@ -19,7 +19,8 @@ const initialState:IInitialState = {
 function createReducers() {
     return {
         setUser,
-        setCards
+        setCards,
+        selectCard
     };
 
     function setUser(state: IInitialState, action: PayloadAction<string>) {
@@ -29,7 +30,9 @@ function createReducers() {
     function setCards(state: IInitialState, action: PayloadAction<SavedCardDataType[]>) {
         state.cards = action.payload
     }
-
+    function selectCard(state: IInitialState, action: PayloadAction<SavedCardDataType | null>) {
+        state.selectedCard = action.payload
+    }
 
 }
 

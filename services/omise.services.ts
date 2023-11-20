@@ -9,7 +9,6 @@ const apiUrl = "https://we-g-w-nest-production.up.railway.app"
 export const createCard = async (cardData: CardDataType, cust_id: string | undefined)
 :Promise<{ error: boolean, cust_id: string, cards: SavedCardDataType[]}> => {
     const { name, cardNumber, expireMonth, expireYear, cvv } = cardData;
-    console.log("before calling omise api", cardData)
     const token = await Omise.createToken({
         'card': {
             name,
@@ -19,7 +18,6 @@ export const createCard = async (cardData: CardDataType, cust_id: string | undef
             'security_code': cvv
         }
     });
-    console.log("token data", token)
 
     try {
         if (cust_id) {
@@ -32,7 +30,6 @@ export const createCard = async (cardData: CardDataType, cust_id: string | undef
                     error: boolean
                 }
             } = await axios.post(url, {customer: cust_id, token: token.id});
-            console.log("testResult", result?.data);
             return {error: result.error, cust_id: result.data?.cust_id || "", cards: result.data?.cards || []};
         } else {
             const url = `${apiUrl}/online-pay`;
@@ -44,7 +41,6 @@ export const createCard = async (cardData: CardDataType, cust_id: string | undef
                     error: boolean
                 }
             } = await axios.post(url, {description: "test it is", email: "m@gmail.com", token: token.id});
-            console.log("testResult", result?.data);
             return {error: result.error, cust_id: result.data?.cust_id || "", cards: result.data?.cards || []};
         }
         
@@ -53,14 +49,23 @@ export const createCard = async (cardData: CardDataType, cust_id: string | undef
     }
 }
 
+export const chargeCard = async(cust_id: string, card_id: string) => {
+    const url = `${apiUrl}/online-pay/charge`;
+            const { 
+                data: result
+            }: { 
+                data: {
+                    data: {cust_id: string, cards:SavedCardDataType[]}, 
+                    error: boolean
+                }
+            } = await axios.post(url, {customer: cust_id, card: card_id});
+            return {error: result.error, cust_id: result.data?.cust_id || "", cards: result.data?.cards || []};
+}
+
 export const getCards = async (cust_id: string):Promise<SavedCardDataType[]> => {
     try {
         const url = `${apiUrl}/online-pay/cards?cust_id=${cust_id}`;
-        console.log("url", url)
-        // const { data: testResult } = await axios.get(apiUrl);
         const { data: result }: { data: {data: SavedCardDataType[], error: boolean}} = await axios.get(url);
-        // const { data: result } = res;
-        console.log("data", result);
         return result.error ? [] : result.data;
     } catch(e) {
         return []

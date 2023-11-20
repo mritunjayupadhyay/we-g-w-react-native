@@ -5,6 +5,7 @@ import styles from "./card.style";
 import { CardDataType, CardType, SavedCardDataType } from "../../types/card.type";
 import { images } from "../../constants";
 import { CardNumber } from "./cardNumber";
+import { userActions } from "../../store/user.slice";
 
 type IProp = {
     card: SavedCardDataType
@@ -27,8 +28,7 @@ export const Card = ({ card }: IProp) => {
     const dispatch = useDispatch();
 
     const onPress = () => {
-        // dispatch(userActions.selectUser(user));
-        console.log("the card we have", card)
+        dispatch(userActions.selectCard(card))
     };
     const cardTypeUrl = getCardTypeImage(card.brand)
     return (
