@@ -22,9 +22,10 @@ npm install
 
 Once the installation is complete, you can start the application using the following command:
 
-bash
+```bash
 # Start the application
 npm run start
+```
 
 
 ## Features
@@ -40,6 +41,9 @@ The app features a straightforward navigation system powered by `@react-navigati
 - **Home**: The primary landing screen of the app.
 - **Cards**: Displays a list of user-added cards and allows payment transactions.
 - **AddCard**: Provides a form to input and save new card information.
+
+## Download link
+You can download the app from this link [here](https://github.com/mritunjayupadhyay/we-g-w-react-native/releases/download/v4/demo-app-v4.zip)
 
 ## Contributing
 
