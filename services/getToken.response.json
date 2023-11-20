@@ -1,0 +1,33 @@
+{
+    "card": {
+        "bank": "CITIBANK N.A.",
+        "brand": "MasterCard",
+        "city": null,
+        "country": "th",
+        "created": "2023-11-19T00:26:01Z",
+        "expiration_month": 12,
+        "expiration_year": 2025,
+        "financing": "credit",
+        "fingerprint": "a250kKo+sWQ79YstY2Sii05iFUZ7L6KsCpuUgBR//6c=",
+        "first_digits": null,
+        "id": "card_test_5xthjmfr5ai0f7bimof",
+        "last_digits": "4444",
+        "livemode": false,
+        "name": "Somnath",
+        "object": "card",
+        "phone_number": null,
+        "postal_code": null,
+        "security_code_check": true,
+        "state": null,
+        "street1": null,
+        "street2": null,
+        "tokenization_method": null
+    },
+    "charge_status": "unknown",
+    "created": "2023-11-19T00:26:01Z",
+    "id": "tokn_test_5xthjmfsh35h48oagxu",
+    "livemode": false,
+    "location": "https://vault.omise.co/tokens/tokn_test_5xthjmfsh35h48oagxu",
+    "object": "token",
+    "used": false
+}

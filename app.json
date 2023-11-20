@@ -21,10 +21,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.mritunjayupadhyay.wegowherereactnative"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "24dce55f-82a7-4bd9-a8b1-a4eb55eb7d4f"
+      }
+    },
+    "owner": "mritunjayupadhyay"
   }
 }
